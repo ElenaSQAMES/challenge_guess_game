@@ -19,3 +19,8 @@ packages/
 .vscode/
 .vs/
 .test
+/.vs/ConsoleApp_Game/v17/.suo
+/.vs/ConsoleApp_Game/FileContentIndex/48cfd6c2-1db5-420c-bbaa-2fb69021d059.vsidx
+/.vs/ConsoleApp_Game/FileContentIndex/81970317-8cfe-4aca-9eda-dcdb2f5a590e.vsidx
+/.vs/ConsoleApp_Game/FileContentIndex/f0afd429-aee4-49eb-b1f5-0a9ce5e51727.vsidx
+/bin/Debug/ConsoleApp_Game.exe.CodeAnalysisLog.xml
