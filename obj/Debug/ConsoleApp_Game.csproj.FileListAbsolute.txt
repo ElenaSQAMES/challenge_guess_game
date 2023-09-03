@@ -8,7 +8,6 @@ C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\obj\Debug\ConsoleApp
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\obj\Debug\ConsoleApp_Game.pdb
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\x86\sqlite3.dll
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\x64\sqlite3.dll
-C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\mongocrypt.dll
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\AWSSDK.Core.dll
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\AWSSDK.SecurityToken.dll
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\DnsClient.dll
@@ -16,9 +15,6 @@ C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\Microsoft.
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\Microsoft.Data.Sqlite.dll
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\Microsoft.Win32.Registry.dll
-C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\MongoDB.Bson.dll
-C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\MongoDB.Driver.Core.dll
-C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\MongoDB.Libmongocrypt.dll
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\SharpCompress.dll
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\Snappier.dll
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\SQLitePCLRaw.core.dll
@@ -40,8 +36,6 @@ C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\Microsoft.
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\Microsoft.Data.Sqlite.xml
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\Microsoft.Win32.Registry.xml
-C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\MongoDB.Bson.xml
-C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\MongoDB.Driver.Core.xml
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\Snappier.xml
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\System.Buffers.xml
 C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\System.Memory.xml
