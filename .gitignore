@@ -18,3 +18,4 @@ packages/
 # Visual Studio files
 .vscode/
 .vs/
+.test
