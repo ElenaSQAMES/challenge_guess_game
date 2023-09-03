@@ -145,7 +145,6 @@ namespace ConsoleApp_Game
             return plusCount == 4;
         }
 
-       
         static void SaveScore(string playerName, int attempts)
         {
             try
