@@ -1,0 +1,20 @@
+# Visual Studio temporary files
+bin/
+obj/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Compiled files
+*.dll
+*.exe
+
+# NuGet packages folder
+packages/
+
+# Visual Studio files
+.vscode/
+.vs/
