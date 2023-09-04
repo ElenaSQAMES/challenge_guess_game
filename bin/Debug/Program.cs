@@ -26,7 +26,7 @@ namespace ConsoleApp_Game
                        
                         ExportScoresToCSV();
 
-                        Console.WriteLine("Press any key to exit...");
+                        Console.WriteLine("Press any key to start...");
                         Console.ReadKey();
                     }
                    
@@ -148,7 +148,7 @@ namespace ConsoleApp_Game
                     }
                 }
             }
-            Console.WriteLine("My hint for computer number is: " + string.Join("", computerNumber));
+            Console.WriteLine("The computer generated number is: " + string.Join("", computerNumber));
             Console.WriteLine($"{new string('+', plusCount)}{new string('-', minusCount)}");
             return plusCount == 4;
         }
@@ -191,8 +191,8 @@ namespace ConsoleApp_Game
                             DataTable dataTable = new DataTable();
                             dataTable.Load(reader);
 
-                            // Define the path for the CSV file
-                            string csvFilePath = "C:\\Users\\elena\\Documents\\SQLexport\\scores.csv";
+                            // Define the your path for the CSV file
+                            string csvFilePath = "C:\\Users\\elena\\Documents\\Game_scores.csv";
 
                             using (StreamWriter writer = new StreamWriter(csvFilePath))
                             {
