@@ -9,7 +9,7 @@ namespace ConsoleApp_Game
     class Program
     {
         private const string connectionString =
-         "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\elena\\Documents\\SampleDatabase.mdf";
+         "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\elena\\source\\repos\\challenge_guess_game\\DataBase_Game\\SampleDatabase.mdf";
 
         static void Main(string[] args)
         {
@@ -23,14 +23,14 @@ namespace ConsoleApp_Game
                     using (var checkTableCommand = new SqlCommand("IF OBJECT_ID('Scores', 'U') IS NULL CREATE TABLE Scores (PlayerName NVARCHAR(50), Attempts INT)", connection))
                     {
                         checkTableCommand.ExecuteNonQuery();
-                       
+
                         ExportScoresToCSV();
 
                         Console.WriteLine("Press any key to start...");
                         Console.ReadKey();
                     }
-                   
-                    
+
+
                 }
             }
             catch (Exception ex)
@@ -108,7 +108,7 @@ namespace ConsoleApp_Game
             }
 
             return computerNumber;
-            
+
         }
         static bool GuessNumber(int[] computerNumber, int guess)
         {
@@ -180,6 +180,18 @@ namespace ConsoleApp_Game
         {
             try
             {
+                // Define the directory path on the C drive
+                string directoryPath = @"C:\GameScores";
+
+                // Check if the directory exists, and create it if it doesn't
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+
+                // Define the full path for the CSV file
+                string csvFilePath = Path.Combine(directoryPath, "Game_scores.csv");
+
                 using (var connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -190,9 +202,6 @@ namespace ConsoleApp_Game
                         {
                             DataTable dataTable = new DataTable();
                             dataTable.Load(reader);
-
-                            // Define the your path for the CSV file
-                            string csvFilePath = "C:\\Users\\elena\\Documents\\Game_scores.csv";
 
                             using (StreamWriter writer = new StreamWriter(csvFilePath))
                             {
@@ -222,7 +231,7 @@ namespace ConsoleApp_Game
                                 }
                             }
 
-                            Console.WriteLine("Scores exported to scores.csv");
+                            Console.WriteLine("Scores exported to Game_scores.csv");
                         }
                     }
                 }
@@ -232,6 +241,62 @@ namespace ConsoleApp_Game
                 Console.WriteLine("Exporting scores to CSV failed: " + ex.Message);
             }
         }
+        //static void ExportScoresToCSV()
+        //{
+        //    try
+        //    {
+        //        using (var connection = new SqlConnection(connectionString))
+        //        {
+        //            connection.Open();
 
+        //            using (var command = new SqlCommand("SELECT PlayerName, Attempts FROM Scores", connection))
+        //            {
+        //                using (var reader = command.ExecuteReader())
+        //                {
+        //                    DataTable dataTable = new DataTable();
+        //                    dataTable.Load(reader);
+
+        //                    // Define the your path for the CSV file
+        //                    string csvFilePath = @"C:\Game_scores.csv";
+
+        //                    using (StreamWriter writer = new StreamWriter(csvFilePath))
+        //                    {
+        //                        // Write the column headers to the CSV file
+        //                        foreach (DataColumn column in dataTable.Columns)
+        //                        {
+        //                            writer.Write(column.ColumnName);
+        //                            if (column != dataTable.Columns[dataTable.Columns.Count - 1])
+        //                            {
+        //                                writer.Write(",");
+        //                            }
+        //                        }
+        //                        writer.WriteLine();
+
+        //                        // Write the data rows to the CSV file
+        //                        foreach (DataRow row in dataTable.Rows)
+        //                        {
+        //                            for (int i = 0; i < dataTable.Columns.Count; i++)
+        //                            {
+        //                                writer.Write(row[i].ToString());
+        //                                if (i != dataTable.Columns.Count - 1)
+        //                                {
+        //                                    writer.Write(",");
+        //                                }
+        //                            }
+        //                            writer.WriteLine();
+        //                        }
+        //                    }
+
+        //                    Console.WriteLine("Scores exported to scores.csv");
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Exporting scores to CSV failed: " + ex.Message);
+        //    }
     }
+
+
 }
