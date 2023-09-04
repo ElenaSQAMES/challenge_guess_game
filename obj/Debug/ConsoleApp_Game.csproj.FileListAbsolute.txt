@@ -108,3 +108,7 @@ C:\Users\elena\Source\Repos\challenge_guess_game\obj\Debug\ConsoleApp_Game.cspro
 C:\Users\elena\Source\Repos\challenge_guess_game\obj\Debug\ConsoleApp_Game.csproj.CopyComplete
 C:\Users\elena\Source\Repos\challenge_guess_game\obj\Debug\ConsoleApp_Game.exe
 C:\Users\elena\Source\Repos\challenge_guess_game\obj\Debug\ConsoleApp_Game.pdb
+C:\Users\elena\Source\Repos\challenge_guess_game\bin\Debug\ConsoleApp_Game.exe.manifest
+C:\Users\elena\Source\Repos\challenge_guess_game\bin\Debug\ConsoleApp_Game.application
+C:\Users\elena\Source\Repos\challenge_guess_game\obj\Debug\ConsoleApp_Game.exe.manifest
+C:\Users\elena\Source\Repos\challenge_guess_game\obj\Debug\ConsoleApp_Game.application
