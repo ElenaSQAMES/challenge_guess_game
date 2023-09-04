@@ -8,9 +8,27 @@
      <Namespaces>
       <Namespace Name="ConsoleApp_Game">
        <Types>
+        <Type Name="Program" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#ExportScoresToCSV()" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2023-09-04 21:04:48Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\elena\source\repos\challenge_guess_game" File="Program.cs" Line="243">Object 'connection' can be disposed more than once in method 'Program.ExportScoresToCSV()'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 243</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Main(System.String[])" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2023-09-04 21:04:48Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\elena\source\repos\challenge_guess_game" File="Program.cs" Line="35">Object 'connection' can be disposed more than once in method 'Program.Main(string[])'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 35</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
         <Type Name="SampleDatabaseDataSet" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2023-09-04 08:57:54Z" FixCategory="NonBreaking">
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2023-09-04 21:04:48Z" FixCategory="NonBreaking">
            <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'SampleDatabaseDataSet'.</Issue>
           </Message>
          </Messages>
@@ -23,6 +41,16 @@
   </Target>
  </Targets>
  <Rules>
+  <Rule TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202">
+   <Name>Do not dispose objects multiple times</Name>
+   <Description>A correctly implemented Dispose method can be called multiple times without throwing an exception. However, this is not guaranteed and to avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.</Description>
+   <Resolution Name="Default">Object {0} can be disposed more than once in method {1}. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 243</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182334.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="17.0.0.0" />
+  </Rule>
   <Rule TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240">
    <Name>Implement ISerializable correctly</Name>
    <Description>If a type is assignable to ISerializable, it should implement GetObjectData. For unsealed types, the GetObjectData method should be callable and overridable by derived types.</Description>

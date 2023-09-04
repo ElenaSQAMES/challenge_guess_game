@@ -18,3 +18,10 @@ packages/
 # Visual Studio files
 .vscode/
 .vs/
+/.vs/ConsoleApp_Game/v17/.suo
+/.vs/ConsoleApp_Game/v17/TestStore/0/000.testlog
+/bin/Debug/ConsoleApp_Game.pdb
+/DataBase_Game/SampleDatabase.mdf
+/DataBase_Game/SampleDatabase_log.ldf
+/SampleDatabase_log.ldf
+/SampleDatabase.mdf

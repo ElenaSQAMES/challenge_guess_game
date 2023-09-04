@@ -9,7 +9,7 @@ namespace ConsoleApp_Game
     class Program
     {
         private const string connectionString =
-         "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\elena\\Documents\\SampleDatabase.mdf";
+             "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\elena\\source\\repos\\challenge_guess_game\\DataBase_Game\\SampleDatabase.mdf";
 
         static void Main(string[] args)
         {
@@ -23,14 +23,15 @@ namespace ConsoleApp_Game
                     using (var checkTableCommand = new SqlCommand("IF OBJECT_ID('Scores', 'U') IS NULL CREATE TABLE Scores (PlayerName NVARCHAR(50), Attempts INT)", connection))
                     {
                         checkTableCommand.ExecuteNonQuery();
-                       
+
                         ExportScoresToCSV();
 
                         Console.WriteLine("Press any key to start...");
                         Console.ReadKey();
+                        connection.Close();
                     }
-                   
-                    
+
+
                 }
             }
             catch (Exception ex)
@@ -108,7 +109,7 @@ namespace ConsoleApp_Game
             }
 
             return computerNumber;
-            
+
         }
         static bool GuessNumber(int[] computerNumber, int guess)
         {
@@ -148,7 +149,7 @@ namespace ConsoleApp_Game
                     }
                 }
             }
-            Console.WriteLine("The computer generated number is: " + string.Join("", computerNumber));
+            Console.WriteLine("HINT =>> The computer generated number is: " + string.Join("", computerNumber));
             Console.WriteLine($"{new string('+', plusCount)}{new string('-', minusCount)}");
             return plusCount == 4;
         }
@@ -166,6 +167,7 @@ namespace ConsoleApp_Game
                         command.Parameters.AddWithValue("@playerName", playerName);
                         command.Parameters.AddWithValue("@attempts", attempts);
                         command.ExecuteNonQuery();
+                        ExportScoresToCSV();
                     }
                 }
 
@@ -176,10 +178,24 @@ namespace ConsoleApp_Game
                 Console.WriteLine("Score saving failed: " + ex.Message);
             }
         }
+
+
         static void ExportScoresToCSV()
         {
             try
             {
+                // Define the directory path on the C drive
+                string directoryPath = @"C:\GameScores";
+
+                // Check if the directory exists, and create it if it doesn't
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+
+                // Define the full path for the CSV file
+                string csvFilePath = Path.Combine(directoryPath, "Game_scores.csv");
+
                 using (var connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -191,10 +207,7 @@ namespace ConsoleApp_Game
                             DataTable dataTable = new DataTable();
                             dataTable.Load(reader);
 
-                            // Define the your path for the CSV file
-                            string csvFilePath = "C:\\Users\\elena\\Documents\\Game_scores.csv";
-
-                            using (StreamWriter writer = new StreamWriter(csvFilePath))
+                            using (StreamWriter writer = new StreamWriter(csvFilePath, false)) // Overwrite the file
                             {
                                 // Write the column headers to the CSV file
                                 foreach (DataColumn column in dataTable.Columns)
@@ -222,16 +235,24 @@ namespace ConsoleApp_Game
                                 }
                             }
 
-                            Console.WriteLine("Scores exported to scores.csv");
                         }
                     }
+
+                    // Close the database connection when done with it
+                    connection.Close();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Exporting scores to CSV failed: " + ex.Message);
             }
+
+
+
         }
 
     }
 }
+
+
+
