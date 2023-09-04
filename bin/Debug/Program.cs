@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
-
+using System.IO;
 
 namespace ConsoleApp_Game
 {
@@ -22,7 +23,14 @@ namespace ConsoleApp_Game
                     using (var checkTableCommand = new SqlCommand("IF OBJECT_ID('Scores', 'U') IS NULL CREATE TABLE Scores (PlayerName NVARCHAR(50), Attempts INT)", connection))
                     {
                         checkTableCommand.ExecuteNonQuery();
+                       
+                        ExportScoresToCSV();
+
+                        Console.WriteLine("Press any key to exit...");
+                        Console.ReadKey();
                     }
+                   
+                    
                 }
             }
             catch (Exception ex)
@@ -168,6 +176,62 @@ namespace ConsoleApp_Game
                 Console.WriteLine("Score saving failed: " + ex.Message);
             }
         }
-        
+        static void ExportScoresToCSV()
+        {
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (var command = new SqlCommand("SELECT PlayerName, Attempts FROM Scores", connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            DataTable dataTable = new DataTable();
+                            dataTable.Load(reader);
+
+                            // Define the path for the CSV file
+                            string csvFilePath = "C:\\Users\\elena\\Documents\\SQLexport\\scores.csv";
+
+                            using (StreamWriter writer = new StreamWriter(csvFilePath))
+                            {
+                                // Write the column headers to the CSV file
+                                foreach (DataColumn column in dataTable.Columns)
+                                {
+                                    writer.Write(column.ColumnName);
+                                    if (column != dataTable.Columns[dataTable.Columns.Count - 1])
+                                    {
+                                        writer.Write(",");
+                                    }
+                                }
+                                writer.WriteLine();
+
+                                // Write the data rows to the CSV file
+                                foreach (DataRow row in dataTable.Rows)
+                                {
+                                    for (int i = 0; i < dataTable.Columns.Count; i++)
+                                    {
+                                        writer.Write(row[i].ToString());
+                                        if (i != dataTable.Columns.Count - 1)
+                                        {
+                                            writer.Write(",");
+                                        }
+                                    }
+                                    writer.WriteLine();
+                                }
+                            }
+
+                            Console.WriteLine("Scores exported to scores.csv");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exporting scores to CSV failed: " + ex.Message);
+            }
+        }
+
     }
 }
