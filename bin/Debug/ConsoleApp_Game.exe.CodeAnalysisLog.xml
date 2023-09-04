@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="c:\program files\microsoft visual studio\2022\community\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
 <FxCopReport Version="17.0">
  <Targets>
-  <Target Name="C:\Users\elena\source\repos\VStudioProjects\ConsoleApp_Game\bin\Debug\ConsoleApp_Game.exe">
+  <Target Name="C:\Users\elena\Source\Repos\challenge_guess_game\bin\Debug\ConsoleApp_Game.exe">
    <Modules>
     <Module Name="consoleapp_game.exe">
      <Namespaces>
@@ -10,7 +10,7 @@
        <Types>
         <Type Name="SampleDatabaseDataSet" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2023-09-03 19:19:29Z" FixCategory="NonBreaking">
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2023-09-04 06:13:55Z" FixCategory="NonBreaking">
            <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'SampleDatabaseDataSet'.</Issue>
           </Message>
          </Messages>
